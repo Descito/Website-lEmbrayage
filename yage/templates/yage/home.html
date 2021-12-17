@@ -1,0 +1,56 @@
+{% extends "yage/base.html" %}
+
+{% load static %}
+
+{% block content %}
+
+<div class="row justify-content-center my-3">
+  <div class="col-5">
+    <img src="{% static 'yage/luka.jpg' %}" class="img-fluid">
+  </div>
+</div>
+
+<div class="row justify-content-center mb-3">
+  <div class="col-md-9 text-center">
+    <h1 id="hometext" class="font-weight-bold">Starboy Descito</h1>
+  </div>
+</div>
+
+<h2 class="mt-5">lEmbrayage</h2>
+<h6>
+<i>lEmbrayage vous offre une experience d'une vie</i> </h6>
+<hr>
+<div class="row">
+  {% for Prjt in projects %}
+  <div class="col-lg-4 col-md-6">
+
+    {% if Prjt.url %}
+    <a href="{{ Prjt.url }}">
+      <img src="{{ Prjt.image.url }}" class="img-fluid mb-2">
+    </a>
+    {% else %}
+
+    <img src="{{ Prjt.image.url }}" class="img-fluid mb-2">
+    {% endif %}
+
+	<div class="dropdown">
+  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    Dropdown button
+  </button>
+  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+    <a class="dropdown-item" href="#">Action</a>
+    <a class="dropdown-item" href="#">Another action</a>
+    <a class="dropdown-item" href="#">Something else here</a>
+  </div>
+</div>
+
+    <h3>{{ Prjt.title }}</h3>
+    <p>{{ Prjt.description }}</p>
+
+  </div>
+  {% endfor %}
+</div>
+
+
+
+{% endblock %}
